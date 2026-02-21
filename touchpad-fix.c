@@ -1,8 +1,8 @@
 /*
- * A simple fix for touchpad scroll speed in Wayland
+ * A simple fix for touchpad scroll speed in Wayland.
  *
  * sudo apt-get install build-essential libinput-dev
- * cc -std=gnu89 -ldl -shared -fPIC -o touchpad-fix.so touchpad-fix.c
+ * cc -ldl -linput -shared -fPIC -o touchpad-fix.so touchpad-fix.c
  * sudo cp touchpad-fix.so /usr/local/lib/touchpad-fix.so
  * echo '0.5' | sudo tee /usr/local/etc/touchpad-fix.conf
  * echo '/usr/local/lib/touchpad-fix.so' | sudo tee -a /etc/ld.so.preload
@@ -39,7 +39,7 @@ double libinput_event_pointer_get_scroll_value
 
     FILE *config_file_stream = fopen(DEFAULT_CONFIG_FILE_PATH, "r");
 
-    if (config_file_stream) {
+    if (config_file_stream != NULL) {
         fscanf(config_file_stream, "%lf", &scroll_value_multiplier);
         fclose(config_file_stream);
     }
