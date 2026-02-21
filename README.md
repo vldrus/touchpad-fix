@@ -1,1 +1,1 @@
-A simple fix for touchpad scroll speed in Wayland
+A simple fix for touchpad scroll speed in Wayland.
